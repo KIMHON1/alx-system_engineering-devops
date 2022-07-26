@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-# Process and PID file
-fpath="/var/run/holbertonscript.pid"
-echo $$ > /var/run/holbertonscript.pid
-    trap 'echo "I hate the kill command"; rm -rf $fpath; exit 0' SIGTERM
-    trap 'echo "Y U no love me?!"' SIGINT
-    trap 'rm -rf $fpath; exit 0' SIGQUIT
+# why you no love me
+
+trap "echo I hate the kill command & rm /var/run/myscript.pid & exit" SIGTERM
+trap "echo Y U no love me?!" SIGINT
+trap 'rm /var/run/myscript.pid & exit' SIGQUIT
+
+echo $$ > /var/run/myscript.pid
 while true; do
-    echo "To infinity and beyond"
+    echo To infinity and beyond
     sleep 2
 done
